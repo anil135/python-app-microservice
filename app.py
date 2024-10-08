@@ -25,7 +25,7 @@ class User(db.Model):
 # Default route for testing
 @app.route('/')
 def index():
-    return "Hello, World!"
+    return "Hello, World welcome to Python Flask app with Postgresql Database!"
 
 
 @app.route('/db-check', methods=['GET'])
