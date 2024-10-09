@@ -17,11 +17,11 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                //sh 'python3 -m venv ${VENV_DIR}'
-                //sh 'chmod +x ${VENV_DIR}/bin/activate'
-                //sh '${VENV_DIR}/bin/activate'
-                //sh 'python3 -m pip install -r requirements.txt'
-                sh 'pip install -r requirements.txt'
+                sh 'python3 -m venv ${VENV_DIR}'
+                sh 'chmod +x ${VENV_DIR}/bin/activate'
+                sh '${VENV_DIR}/bin/activate'
+                sh 'python3 -m pip install -r requirements.txt'
+                //sh 'pip install -r requirements.txt'
             }
         }
 
