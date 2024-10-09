@@ -33,7 +33,7 @@ def db_check():
     try:
         # Run a simple query to check the database connection
         result = db.session.execute(text('SELECT 1'))
-        return "Database connection is successful!", 200
+        return "Database connection is successful! Webhook added", 200
     except Exception as e:
         return f"Database connection failed: {str(e)}", 500
 
