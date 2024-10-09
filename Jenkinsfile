@@ -17,8 +17,9 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'sudo apt update'
-                sh 'sudo apt install python3.12-venv'
+                sh 'echo "ubuntu" | sudo -S apt update && sudo -S apt install -y python3.12-venv'
+                //sh 'sudo apt update'
+                //sh 'sudo apt install python3.12-venv'
                 sh 'python3 -m venv ${VENV_DIR}'
                 sh 'chmod +x ${VENV_DIR}/bin/activate'
                 sh '${VENV_DIR}/bin/activate'
