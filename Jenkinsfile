@@ -3,8 +3,6 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'anil135/python-app-microservice'
         DOCKER_CREDENTIALS_ID = 'docker-repo-credentials' // Docker credentials stored in Jenkins
-        DATABASE_URL = 'postgresql://postgres:postgres@localhost:5432/test'
-        DB_CONTAINER_NAME = 'jenkins_db'
         VENV_DIR = './venv'
     }
 
@@ -16,16 +14,6 @@ pipeline {
             }
         }
 
-        stage('Setup Database') {
-            steps {
-                // Start a PostgreSQL database in a Docker container for testing
-                sh '''
-                docker run -d --name ${DB_CONTAINER_NAME} -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=users_db -p 5432:5432 postgres:13
-                '''
-                // Wait for the database to be ready
-                sleep 20
-            }
-        }
 
         stage('Install Dependencies') {
             steps {
@@ -59,19 +47,7 @@ pipeline {
             }
         }
 
-        stage('Cleanup') {
-            steps {
-                // Remove PostgreSQL container
-                sh "sh 'docker compose down || true'"
-            }
-        }
-    }
 
-    post {
-        always {
-            // Cleanup Docker resources if necessary
-            sh 'docker system prune -f'
-        }
         success {
             echo 'Pipeline completed successfully.'
         }
