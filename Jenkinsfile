@@ -51,7 +51,11 @@ pipeline {
     post {
         
         success {
+<<<<<<< HEAD
             echo 'Pipeline completed successfully'
+=======
+            echo 'Pipeline completed successfully and pushed docker image to repo'
+>>>>>>> aebcfd9 (echo statement modified)
         }
 
         failure {
