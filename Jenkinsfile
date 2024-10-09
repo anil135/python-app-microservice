@@ -46,6 +46,8 @@ pipeline {
             }
         }
 
+    }
+
     post {
         
         success {
@@ -53,9 +55,8 @@ pipeline {
         }
 
         failure {
-            echo 'Pipeline failed. Check the logs for errors'
+            echo 'Pipeline failed. Check logs for errors'
         }
     }
         
-    }
 }
