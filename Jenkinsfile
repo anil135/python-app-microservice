@@ -17,7 +17,6 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Install Python dependencies'
                 //sh 'python3 -m venv ${VENV_DIR}'
                 //sh 'chmod +x ${VENV_DIR}/bin/activate'
                 //sh '${VENV_DIR}/bin/activate'
