@@ -15,16 +15,28 @@ pipeline {
         }
 
 
+        stage('Setup Virtual Environment') {
+            steps {
+                // Create the virtual environment
+                sh 'python3 -m venv ${VENV_DIR}'
+                
+                // Install pip if it's missing
+                sh '''
+                    if [ ! -f "${VENV_DIR}/bin/pip" ]; then
+                        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+                        ${VENV_DIR}/bin/python get-pip.py
+                    fi
+                '''
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
-                
-                sh 'sudo apt update'
-                sh 'sudo apt install -y python3.12-venv'
-                sh 'python3 -m venv ${VENV_DIR}'
-                sh 'chmod +x ${VENV_DIR}/bin/activate'
-                sh '${VENV_DIR}/bin/activate'
-                sh 'python3 -m pip install -r requirements.txt'
-                //sh 'pip install -r requirements.txt'
+                // Activate virtual environment and install dependencies
+                sh '''
+                    . ${VENV_DIR}/bin/activate
+                    pip install -r requirements.txt
+                '''
             }
         }
 
