@@ -16,10 +16,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{db_user}:{db_password}@{
 db = SQLAlchemy(app)
 
 
-# Define the User table
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
+
 
 
 # Default route for testing
