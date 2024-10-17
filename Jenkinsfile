@@ -22,7 +22,7 @@ pipeline {
                 sh 'apt install python3-venv -y'
                 sh 'python3 -m venv ${VENV_DIR}'
                 
-                // Install pip if it's missing
+                // Install pip if it is missing
                 sh '''
                     if [ ! -f "${VENV_DIR}/bin/pip" ]; then
                         curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
