@@ -18,8 +18,8 @@ pipeline {
         stage('Setup Virtual Environment') {
             steps {
                 // Create the virtual environment
-                sh 'sudo apt update'
-                sh 'sudo apt install python3-venv -y'
+                sh 'apt update'
+                sh 'apt install python3-venv -y'
                 sh 'python3 -m venv ${VENV_DIR}'
                 
                 // Install pip if it's missing
