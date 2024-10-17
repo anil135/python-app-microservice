@@ -45,7 +45,7 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-                // Build the Docker image for the  python microservice
+                // Build the Docker image for the  python microservice demo purpose
                 sh "docker build -t ${DOCKER_IMAGE}:${env.BUILD_NUMBER} ."
             }
         }
