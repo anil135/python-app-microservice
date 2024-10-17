@@ -66,7 +66,7 @@ pipeline {
     post {
         
         success {
-            echo 'Pipeline completed successfully, Docker image pushed to repo.'
+            echo 'Pipeline completed successfully, Docker image pushed to anil135 repository.'
         }
 
         failure {
